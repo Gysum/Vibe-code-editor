@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
+import TemplateSelectingModal from "./template-selecting-modal";
 
 const AddNewButton = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +35,7 @@ const AddNewButton = () => {
           </Button>
           <div className="flex flex-col">
             <h1 className="text-xl font-bold text-[#e93f3f]">Add New</h1>
-            <p className="text-sm text-muted-foreground max-w-[220px]">
+            <p className="text-sm text-muted-foreground max-w-55">
               Create a new playground
             </p>
           </div>
@@ -50,6 +51,12 @@ const AddNewButton = () => {
           />
         </div>
       </div>
+
+      <TemplateSelectingModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={() => {}}
+      />
     </>
   );
 };
