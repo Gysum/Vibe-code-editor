@@ -7,7 +7,7 @@ import { getuserById } from "./modules/auth/actions";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async signIn({ user, account }) {
-      // if (!user || !account) return false;
+      if (!user || !account) return false;
 
       // const existingUser = await db.user.findUnique({
       //   where: { email: user.email! },
@@ -25,13 +25,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       //           type: account.type,
       //           provider: account.provider,
       //           providerAccountId: account.providerAccountId,
-      //           refreshToken: account.refresh_token,
-      //           accessToken: account.access_token,
-      //           expiresAt: account.expires_at,
-      //           tokenType: account.token_type,
+      //           refresh_token: account.refresh_token,
+      //           access_token: account.access_token,
+      //           expires_at: account.expires_at,
+      //           token_type: account.token_type,
       //           scope: account.scope,
-      //           idToken: account.id_token,
-      //           sessionState: account.session_state,
+      //           id_token: account.id_token,
+      //           session_state: account.session_state,
       //         },
       //       },
       //     },
