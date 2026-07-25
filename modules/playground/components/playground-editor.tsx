@@ -1,5 +1,5 @@
-"use client"
-import { useRef, useCallback, useEffect } from 'react'
+"use client";
+import { useRef, useCallback, useEffect } from "react";
 import Editor, { type Monaco } from "@monaco-editor/react";
 import { TemplateFile } from "../lib/path-to-json";
 import {
@@ -19,7 +19,6 @@ interface PlaygroundEditorProps {
   onRejectSuggestion: (editor: any) => void;
   onTriggerSuggestion: (type: string, editor: any) => void;
 }
-
 
 const PlaygroundEditor = ({
   activeFile,
@@ -43,7 +42,7 @@ const PlaygroundEditor = ({
   const isAcceptingSuggestionRef = useRef(false);
   const suggestionAcceptedRef = useRef(false);
   const suggestionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const tabCommandRef = useRef<any>(null);
+  const tabCommandRef = useRef<number | null>(null);
 
   // Generate unique ID for each suggestion
   const generateSuggestionId = () =>
@@ -389,8 +388,8 @@ const PlaygroundEditor = ({
     });
 
     // CRITICAL: Override Tab key with high priority and prevent default Monaco behavior
-    if (tabCommandRef.current) {
-      tabCommandRef.current.dispose();
+    if (tabCommandRef.current !== null) {
+      tabCommandRef.current = null;
     }
 
     tabCommandRef.current = editor.addCommand(
@@ -572,8 +571,7 @@ const PlaygroundEditor = ({
         inlineCompletionProviderRef.current.dispose();
         inlineCompletionProviderRef.current = null;
       }
-      if (tabCommandRef.current) {
-        tabCommandRef.current.dispose();
+      if (tabCommandRef.current !== null) {
         tabCommandRef.current = null;
       }
     };
@@ -612,5 +610,5 @@ const PlaygroundEditor = ({
       />
     </div>
   );
-};;;;;;
-export default PlaygroundEditor
+};
+export default PlaygroundEditor;

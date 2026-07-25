@@ -36,20 +36,13 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <SessionProvider session={session}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+          <ThemeProvider>
             <Toaster />
 
             <div className="flex flex-col min-h-screen">
               <div className="flex-1">{children}</div>
             </div>
           </ThemeProvider>
-
-          
         </SessionProvider>
       </body>
     </html>

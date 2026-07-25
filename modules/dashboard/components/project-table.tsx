@@ -180,7 +180,10 @@ export default function ProjectTable({
               <TableRow key={project.id}>
                 <TableCell className="font-medium">
                   <div className="flex flex-col">
-                    <Link href={`/playground/${project.id}`} className="hover:underline">
+                    <Link
+                      href={`/playground/${project.id}`}
+                      className="hover:underline"
+                    >
                       <span className="font-semibold">{project.title}</span>
                     </Link>
                     <span className="text-sm text-gray-500 line-clamp-1">
@@ -224,12 +227,17 @@ export default function ProjectTable({
                     <DropdownMenuContent align="end" className="w-48">
                       <DropdownMenuItem asChild>
                         <MarkedToggleButton
-                          markedForRevision={project.Starmark[0]?.isMarked}
+                          markedForRevision={
+                            project.starMarks?.[0]?.isMarked ?? false
+                          }
                           id={project.id}
                         />
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <Link href={`/playground/${project.id}`} className="flex items-center">
+                        <Link
+                          href={`/playground/${project.id}`}
+                          className="flex items-center"
+                        >
                           <Eye className="h-4 w-4 mr-2" />
                           Open Project
                         </Link>

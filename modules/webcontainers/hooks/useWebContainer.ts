@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { WebContainer } from "@webcontainer/api";
 import { TemplateFolder } from "@/modules/playground/lib/path-to-json";
 
+
+
 interface UseWebContainerProps {
   templateData: TemplateFolder;
 }
@@ -70,7 +72,6 @@ export const useWebContainer = ({
         if (folderPath) {
           await instance.fs.mkdir(folderPath, { recursive: true }); // Create folder structure recursively
         }
-
         await instance.fs.writeFile(path, content);
       } catch (err) {
         const errorMessage =
